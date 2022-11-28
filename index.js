@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const mongoString = process.env.DATABASE_URL;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const routes = require("./routes/routes");
 
 mongoose.connect(mongoString);
@@ -25,4 +25,4 @@ app.listen(PORT, () => {
 
 app.use(express.json());
 app.use(express.static("public"));
-app.use("/amongus", routes);
+app.use("/", routes);
