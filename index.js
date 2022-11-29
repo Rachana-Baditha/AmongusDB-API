@@ -23,6 +23,11 @@ app.listen(PORT, () => {
   console.log(`Server Started at ${3000}`);
 });
 
+app.all("*", function (req, res, next) {
+  res.set("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.use(express.json());
 app.use(express.static("public"));
 app.use("/", routes);
